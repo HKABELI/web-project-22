@@ -1,0 +1,210 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Amatic+SC:wght@700&display=swap');
+
+:root{
+
+  /* theme colors*/
+  --text-gray: #3f4954;
+  --text-light: #686666da;
+  --bg-color:#0f0f0f;
+  --white:#fffff;
+  --midnigt:#104f55;
+  --lightP:#e9e2e6;
+  --darkP: #56434d;
+  --text-graybold: #303d4b;
+
+}
+* {box-sizing: border-box}
+
+body {
+
+     margin:0}
+
+
+#welcome{
+  font-family: 'Alef', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 5px;
+
+  margin-bottom: 10px;
+  font-weight: 100;
+  margin-top: 20px;
+  color:var(--text-gray);
+}
+
+ 
+#welcomP{
+  box-shadow: var(--text-gray);
+
+background-image: url("../mandala/buda-opacity.jpeg");
+background-color:white;
+height: 500px;
+background-position: center;
+background-repeat: no-repeat;
+position: relative;
+font-size: 20px;
+ letter-spacing: 3px;
+direction: rtl;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 100;
+  margin: 50px;
+  color:var(--text-gray);
+}
+
+h1{
+  font-family: 'Alef', sans-serif;
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 5px;
+  font-weight: 100;
+color: var(--text-gray);
+direction: rtl;
+
+}
+
+
+  h2{
+    font-family: 'Alef', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    font-weight: 100;}
+  
+  .mandala{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    height: 100%;
+      padding: 100px;
+    vertical-align: baseline;
+    align-items: center;
+  }
+.mandala-up{  
+  justify-content :center;
+
+    padding: 100px;
+  vertical-align: baseline;
+  align-items: center;
+}
+
+  .mandala a :hover{
+    opacity: 50%;
+  }
+
+
+  #d{
+    width: 250px;
+    image:var(--midnigt);
+  }
+  
+  #d1{
+    background:yellow;
+    mix-blend-mode: exclusion;
+    height: 217px; mix-blend-mode: color-dodge;
+
+  }
+
+/*------------imgs----------*/  
+
+.mySlides {
+    display: none;
+
+  }
+
+.mySlides img {
+  width: 100%;
+  height: 100%;
+    vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 980px;
+  position: relative;
+  margin: auto;
+  max-width: 900px;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: var(--darkP)
+}
+
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: var(--lightP);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: var(--darkP);
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
+@media only screen and (max-width:750px){
+  .mandala{
+    display: none;
+}
+.slideshow-container ,.dot,#welcome ,Footer{
+
+  display: none;
+}
+}

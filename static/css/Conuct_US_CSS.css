@@ -1,0 +1,52 @@
+
+.Box {
+    width: 300px;
+    padding: 20px;
+    margin: 2% auto;
+    text-align: center;
+    border-radius: 50%;
+    font-family: 'Alef', sans-serif;
+    margin: o;
+    letter-spacing: 1px;
+    font-weight: 100%;
+}
+
+/*input box to contact*/
+.input-box {
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #999;
+
+}
+
+/*bouda img*/
+.img {
+    right: 100px;
+    width: 80%;
+    height: 80%;
+}
+
+.input-message {
+    height: 50px;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #999;
+
+}
+
+/*btn to send the contact message*/
+.btn {
+    width: 40px;
+    background: rgb(152, 200, 204);
+    color: white;
+    padding: 10px 10px;
+    display: flex;
+    text-align: right;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 8% auto;
+
+}
+

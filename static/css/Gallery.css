@@ -1,0 +1,292 @@
+*,
+
+ *::after,
+ *::before {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit; 
+ }
+ #Reg{
+  text-align: center;
+  font-size: 15px;
+   /* background-color: */
+     font-family: 'Alef', sans-serif;
+  color:var(--darkP)
+}
+
+* {box-sizing: border-box}
+ 
+ html {
+   box-sizing: border-box;
+   font-size: 62.5%; 
+ }
+
+ body {
+   color: #333;
+   font-weight: 300;
+   line-height: 1.6; 
+ }
+
+ :root{
+
+  /* theme colors*/
+  --text-gray: #3f4954;
+  --text-light: #686666da;
+  --bg-color:#0f0f0f;
+  --white:#fffff;
+  --midnigt:#104f55;
+  --lightP:#e9e2e6;
+  --darkP: #56434d;
+  --text-graybold: #303d4b;
+
+}
+
+
+  
+h1{
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 5px;
+  font-weight: 100;
+  color: var(--text-gray);
+  direction: rtl;
+
+
+}
+
+
+h2{
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 5px;
+  font-weight: 100;
+  color: var(--text-gray);
+  direction:rtl;
+  display: block;
+
+
+}
+
+
+
+p{
+  font-size: 20px;
+}
+
+
+  /*****picture**********/
+
+
+.aligncenter {
+    text-align: center;
+}
+
+
+
+  /**********right side items***************/
+
+  
+  .side-items{
+
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+  }
+
+  .side-items li{
+    list-style:none;
+  }
+  
+  .side-items li a{
+    display: block;
+    text-decoration: none;
+    height: 30px;
+    line-height: 20px;
+    font-size: 25px;
+    background: rgba(245, 248, 248, 0.644);
+    width: 240px;
+    color: #703255e0;
+    margin: 4px 0 ;
+    padding-right: 10px;
+    text-transform: uppercase;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;  
+    
+  }
+
+
+  .side-items li a:hover {
+    color: #072b2b;
+  }
+/******G container that includes the content of the right side list *******/
+  .G-Container{
+    width: 100%;
+    height: 100vh;
+  }
+
+  b{
+    font-family: 'Alef', sans-serif;
+    font-size: 30px;
+    text-align: right;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    font-weight: 100;
+  }
+  
+
+
+/******youtube videos********/
+  .G-Container .G-YouTubeVideos {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 5vw);
+    grid-gap: 1.5rem; 
+  }
+  
+  .gallery__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+    margin: 10px;
+  }
+
+
+  .G-Container .G-YouTubeVideos .item--1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 8;
+  
+  }
+  
+  
+  .G-Container .G-YouTubeVideos .item--2 {
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 8;
+    
+  
+  }
+  
+  
+  .G-Container .G-YouTubeVideos .item--3 {
+    grid-column-start: 7;
+    grid-column-end: 10;
+    grid-row-start: 3;
+    grid-row-end: 8;
+    
+  }
+
+  .G-Container .G-YouTubeVideos .item--4 {
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    
+  }
+
+
+ 
+  
+
+
+/*****previus lessons*****************/
+
+.G-Container .G-PreviousLessons  {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 5vw);
+  grid-gap: 1.5rem; 
+}
+
+.gallery__RVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; 
+  margin: 10px;
+
+}
+
+.G-Container .G-PreviousLessons .gallery__item--1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start:3;
+  grid-row-end: 8;
+}
+
+
+.G-Container .G-PreviousLessons .gallery__item--2 {
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row-start: 3;
+  grid-row-end: 8;
+
+}
+
+
+.G-Container .G-PreviousLessons .gallery__item--3{
+  grid-column-start: 7;
+  grid-column-end: 10;
+  grid-row-start: 3;
+  grid-row-end: 8;
+}
+
+.G-Container .G-PreviousLessons .gallery__item--4{
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+
+
+
+
+
+
+/**********yoga positions************/
+
+.position{
+    max-width: 1300px;
+    background-color:white;
+    border-color:var(--darkP);
+    margin: 40px auto 0 auto;
+    line-height: 1.65;
+    padding: 20px 50px;
+    margin: 15px;
+  display: flex;
+  margin: 50px auto;
+}
+
+
+
+.content{
+flex:4;
+direction: rtl;
+}
+
+.imges {
+  flex:1;
+  position: relative;
+}
+
+
+img {
+   width: 400px;
+   
+}
+
+/************lectures about yoga****************/  
+#Gcontainer div#LecturesAndPhilosophy{
+    background: rgb(189, 207, 21);
+    
+    
+  }
+  
