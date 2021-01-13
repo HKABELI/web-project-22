@@ -28,7 +28,7 @@ def Contact_Us():
 
 @app.route('/Contact_Us', methods=['GET', 'POST'])
 def contact_uc_check_func():
-    username = 'vita'
+    username = ''
     if request.method == 'POST':
         # check in DB of the website  user Exists
         # if yes
