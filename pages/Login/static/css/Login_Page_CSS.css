@@ -1,0 +1,58 @@
+*{
+  font-family: 'Alef', sans-serif;
+
+}
+body{
+
+margin: o;
+padding: 0;
+font-family: sans-serif;
+background-image: url(../photos/login2.jpg) ;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+font-size: 15px;
+letter-spacing: 1px;
+font-weight: 100%;
+
+
+}
+
+.loginBox {
+width: 300px;
+box-shadow:0 0 3px 0 rgba(194, 196, 185, 0.5);
+background:rgba(194, 196, 185, 0.5);
+padding: 20px;
+margin: 8% auto;
+text-align: center;
+border-radius: 50%;
+font-family: 'Alef', sans-serif;
+
+
+
+}
+
+.input-box{
+border-radius: 20px;
+padding: 10px;
+margin: 10px;
+border:1px solid #999
+}
+
+.login-btn {
+  color: #999;
+  padding: 10px;
+  border-radius: 20px;
+  border:1px solid #999
+
+}
+
+.sign-in-link{
+  color:black;
+
+}
+.sign-in-link:hover{
+    color:lightyellow
+}
+

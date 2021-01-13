@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('Home.static',filename='css/Home.css') }}">
+    <meta charsey="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!---------------script---------------->
+    <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
+{#        <script src="{{url_for('static',filename= 'js/main.js')}}"></script>#}
+
+    <!------script-->
+    <title>דף בית</title>
+</head>
+<body>
+    <Header>     {% include 'Header.html' %} </Header>
+
+        <div class="welc">
+    <p id="welcomP">
+        <b>ברוכים הבאים מתרגלים יקרים, </b> <br> <br>
+        בחרתי לפתח אתר בו תוכלו למצוא תכנים מעניינים ומחדשים על עולם היוגה והמדיטציה. <br>
+        חשיפתי לעולם היוגה התחילה לפני כחמש שנים, בהם תרגלתי בעיקר באופן פיזי פעם פעמיים בשבוע ולעיתים רחוקות מדיטציה.
+        <br>
+        הייתי מרגישה את השינוי בגוף אחרי התרגול – אך לא ידעתי באמת להבחין מה בדיוק קורה,
+        הרגשתי שלא היו לי מחשבות במשך שעה ושאני יוצאת רגועה, ופייר הספיק לי. <br>
+        <br>
+
+        לאחר כל השנים האלה , כשהתחלתי ללמוד על הצד הפילוסופי <br>
+
+        הרגשתי שהיה חסר לי כל כך הרבה מידע רלוונטי שיכל להשפיע לי על התפיסה של התרגול ואף להכניס את התרגול באופן יום
+        יומי ועצמאי. <br>
+        <br> <br> נחשפתי לפילוסופיה של היוגה בשנת 2019 ,
+        <br> הבנתי שהתרגול הפיזי משפיע בדרכו על הגוף הפיזי והמנטלי כאחד. <br> שהיוגה היא לא אימון גופני, אלא מסע רוחני
+        ורגשי שניתן לעבוד יחד איתו על המשקעים הכי עמוקים שלנו.
+        <br> מוזמנים ללמוד על העולם ולהתחיל את המסע הפנימי שלכם. <br>
+
+        <br>
+        <br>הדר קבלי
+
+
+    </p>
+
+</div>
+<div>
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+            <img src="{{ url_for('Home.static', filename='photos/hadar2.jpeg' )}}" style="width:100%" >
+        </div>
+
+        <div class="mySlides fade">
+            <img src="{{ url_for('Home.static', filename='photos/hadar1.jpg' )}}" style="width:100%">
+        </div>
+
+        <div class="mySlides fade" >
+            <img src="{{ url_for('Home.static', filename='photos/hadar4.jpeg' )}}" style="width:100%">
+
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <h1 id="welcome">" Yoga does not just change the way we see things <br> it transforms the person who sees."</h1>
+        <h2 id="welcome">~ B.K.S Iyengar</h2>
+
+
+        <div class="mandala">
+
+            <a href="Asana">
+                <img id="d1" src="{{ url_for('Home.static', filename='photos/2.jpg' )}}">
+                <h2>אסנה</h2>
+                </img>
+            </a>
+            <a href="Meditation">
+                <img id="d" src="{{ url_for('Home.static', filename='photos/Pranyama.jpg' )}}">
+                <h2>מדיטציה</h2>
+            </a>
+            <a href="Pranayama">
+                <img id="d" src="{{ url_for('Home.static', filename='photos/1.jpg' )}}">
+                <h2>פראנימה</h2>
+            </a>
+            <a href="Yoga">
+                <img id="d" src="{{ url_for('Home.static', filename='photos/yoga.jpg' )}}">
+                <h2>יוגה</h2>
+            </a>
+
+
+        </div>
+   <script src="{{url_for('Home.static',filename= 'js/slides.js')}}"></script>
+        <script>            var slideIndex = 1;             showSlides(slideIndex);         </script>
+
+
+
+<Footer>     {% include 'Footer.html' %} </Footer>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+/*------header------*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Amatic+SC:wght@700&display=swap');
+
+
+html, body{
+   margin: 0%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: 'Alef', sans-serif;
+    transition: background-color .5s;
+}
+
+
+:root{
+
+    /* theme colors*/
+    --text-gray: #3f4954;
+    --text-light: #686666da;
+    --bg-color:#0f0f0f;
+    --white:#fffff;
+    --midnigt:#104f55;
+    --lightP:#e9e2e6;
+
+    --lightP:#e9e2e6;
+    --darkP: #56434d;
+        --lightPless: #e6e6e6;
+
+}
+
+
+/* ---- GlObal classes ----*/
+
+a{
+text-decoration: none;
+color:var(--text-gray);
+padding: 8px 11px;
+
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: row;
+}
+
+ul{
+    list-style-type: none;
+
+}
+
+/* ---XX - GlObal classes ----*/
+
+#logo{
+    width: 100px;
+    margin: 10px;
+    position: relative;
+    left:50%;
+    border-radius: 100%;
+    border-top: 0;
+    border-bottom: 4px;
+    border-style:dotted;
+  }
+  
+  .headLogo{
+    background-color:var(--lightP);
+  }
+  
+/*----- navigation----*/
+#Reg{
+    text-align: center;
+     /* background-color: */
+       font-family: 'Alef', sans-serif;
+    color:var(--darkP);
+    font-size: 15px;
+
+}
+.nav{
+      overflow: hidden;
+}
+.nav-brand a{
+    font-size: 25px;
+    display: block;
+    white-space: nowrap;
+}
+
+.nav-items{
+    display: flex;
+    margin: 0;
+
+}
+
+.nav-menu{
+    justify-content: space-between;
+height: auto;
+padding-bottom:10px ;
+
+}
+
+.toggle-collapse{
+    position: absolute;
+    top: 0%;
+    width: 90%;
+    cursor:pointer;
+    display: none;
+}
+
+.toggle-icons{
+display: flex;
+justify-content: flex-end;
+padding: 1.7rem 0;
+}
+
+.toggle-icons i{
+    font-size: 25px;
+    color: var(--text-gray);
+    }
+
+.collapse{
+        height: 30rem;
+    }
+
+
+.nav-link{
+    font-size: 20px;
+    padding: 10px 11px;
+    position: relative;
+}
+
+.nav-link:hover a{
+    color:var(--lightP);
+}
+
+.nav-link:hover {
+    background-color: var(--darkP);
+    }
+
+   .sub-link {
+        background-color: var(--darkP);
+   }
+
+        .sub-link .sub-links{
+
+            color: white   }
+
+    .sub-link .sub-links:hover{
+        color:black;
+    }
+
+    .dropbtn {
+        font-size: 16px;  
+        border: none;
+        outline: none;
+        color: white;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+      }
+      
+    
+.social{
+    padding: 8px 11px;
+    font-size: 16px;
+}
+
+.nav .social .icon i{
+width: 20px;
+height: 35px;}
+
+.icon i:hover{
+color:var(--lightP);
+}
+
+/*----- navigation----*/
+
+/*---XXXX---header------*/
+
+/*------footer------*/
+
+h3 {
+    margin: 0;
+    display: grid;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+    grid-gap: 20px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #818078;
+    
+  }
+  h3{
+    font-size: 16px;
+    color:var(--text-gray);
+    text-transform: uppercase;
+  }
+
+  h3:before,   h3:after {
+    content: '';
+    height: 1px;
+  }
+  
+  h3:after {
+    background: linear-gradient(to right, transparent, #818078);
+  }
+  
+  h3:before {
+    background: linear-gradient(to right, #818078, transparent);
+  }
+ 
+/*------footer------*/
+
+
+/*-----------nav bar - open/close-----------*/
+
+    
+    .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: var(--darkP);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    }
+    
+    .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 3px;
+    direction: rtl;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--lightP);
+    display: block;
+    transition: 0.3s;
+    }
+    
+    .sidenav a:hover {
+    color:black;
+    }
+    
+    .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    }
+    
+    #main {
+    transition: margin-left .5s;
+    padding: 16px;
+    }
+    
+    @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    }
+/*---XXXX----nav bar - open/close-----------*/
+
+
+/*    veiw less than 750 px*/
+@media only screen and (max-width:750px){
+       .nav-items{
+    visibility:hidden;
+    }
+
+
+.toggle-collapse {
+        display: initial;
+    }
+
+    #logo{
+        left:2%; 
+        top:2%;
+
+        }
+
+ }
+ 
