@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
+        <script src="static/js/main.js"></script>
+        <script src="{{url_for('static',filename= 'js/main.js')}}"></script>
+        <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+                <div class="main">
+                <!--- navigation---->
+                <div class="headLogo" id="headLogo"> <img id="logo" src="{{ url_for('static', filename='photos/Logo.jpg' )}}" alt="" >
+
+{#                <a id="Reg" href="{{ url_for('Login_Page') }}" target='_blank'  >התחבר / הרשמה  </a>#}
+                <br>
+                <br>
+                </div>
+                <nav class="nav">
+                    <div class="nav-menu flex-row">
+                        <div class="nav-brand">
+                            <a href="Home.html">יוגה אצל הדר</a>
+                        </div>
+                        <div class="toggle-collapse" >
+                            <div class="toggle-icons" >
+                                <span style="font-size:30px;cursor:pointer" onclick="openNav()" >&#9776; </span>                </div>
+                        </div>
+                        <div class="menu">
+                            <ul class ="nav-items">
+                                <li class= "nav-link">  <a class= "links" href={{ url_for('Contact_Us') }}>צור קשר</a>      </li>
+                                <li class= "nav-link">  <a class= "links"href="{{ url_for('GalleryPage') }}">גלריה</a>        </li>
+                                 <div onclick="openNavi()">
+                                <li class= "nav-link" >  <a href="#">עולם היוגה </a>
+                                <button class="dropbtn" > <i class="fa fa-caret-down"></i> </button>
+                                <ul id = "subYoga">
+                                </ul>
+                                </li>
+                                </div>
+                                <li class= "nav-link">  <a class= "links" href="{{ url_for('Exercises') }}">תרגולים</a>      </li>
+                                <li class= "nav-link">  <a class= "links" href="{{ url_for('aboutme') }}">קצת עלי</a>      </li>
+                                <li class= "nav-link">  <a class= "links" href= "{{ url_for('Home') }}">דף בית</a>     </li>
+                                </ul>
+
+                            </div>
+                        <div class="social text-gray">
+                            <a class="icon" href="https://www.facebook.com/hkabeli" target='_blank'><i class="fab fa-facebook"></i></a>
+                            <a class="icon" href="https://www.instagram.com/hkabeli/"target='_blank'><i class="fab fa-instagram"></i></a>
+                            <a class="icon" href="whatsapp://send?abid=0544481882&text=Hello%2C%20World!" target='_blank'><i class="fab fa-whatsapp"></i></a>
+                            <a class="icon" href="https://www.youtube.com/channel/UC8NU_MXzI_VhqkxeyuHZAow" target='_blank'><i class="fab fa-youtube"></i></a>
+
+                        </div>
+                        </div>
+
+
+
+
+                            </nav>
+
+                            <!----X--navigation-->
+
+                                    <!------------------ side navigation----------------->
+
+                                    <div id="mySidenav" class="sidenav">
+                                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                        <a href="{{ url_for('Home') }}">דף בית</a>
+                                        <a href="{{ url_for('aboutme') }}">קצת עלי</a>
+                                        <a href="{{ url_for('Exercises') }}">תרגולים</a>
+                                        <a href="{{ url_for('GalleryPage') }}">גלריה</a>
+                                        <a href="{{ url_for('Contact_Us') }}">צור קשר</a>
+                                        <a href="{{ url_for('Login_Page') }}" target='_blank' >התחבר/הרשם</a>
+
+
+
+                                        </div>
+                                    <!---XXX------------ side navigation----------------->
+                                </div>
+</body>
+</html>
+
+{#<link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/main-menu.css') }}"/>#}
+{##}
+{#{%#}
+{#    set menu_items = {#}
+{#        'Home': '/'#}
+{#    }#}
+{#%}#}
+{##}
+{#{% for item in menu_items %}#}
+{#    <li>#}
+{#        <a#}
+{#            href="{{ menu_items[item] }}"#}
+{#            {% if menu_items[item] == request.path %}#}
+{#                class="active"#}
+{#            {% endif %}#}
+{#        >{{ item | capitalize }}</a>#}
+{#    </li>#}
+{#{% endfor %}#}

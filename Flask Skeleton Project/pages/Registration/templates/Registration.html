@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+    {% block page_head %}
+  <link rel="stylesheet" href="{{ url_for('Registration.static',filename='css/Registration.css') }}">
+{% endblock %}
+    {% block page_body_header %}
+          <link rel="stylesheet" href="{{ url_for('Registration.static',filename='css/Registration.css') }}">
+        <br>
+        <br>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <form class="myForm">
+
+     <div class="regform">רישום לאתר</div>
+<div class="mainf">
+  <div action="/Registration" method="post">
+      <div class= "name">
+      <h2>שם מלא</h2>
+      <br>
+      <input class="FirstName" name="FirstName" type="text" placeholder="שם פרטי" onfocus="contactFunction(this)" required><br>
+      <input class="FirstName" name="FirstName"  type="text" placeholder="שם משפחה" onfocus="contactFunction(this)" required><br>
+    </div>
+    <h2>כתובת אימייל</h2>
+    <br>
+    <input class="EmailAddress" name="LastName" type="text" required><br>
+
+    <h2>מספר טלפון</h2>
+    <br>
+    <input class="PhoneNumber" name="Email" type="text" name="PhoneNumber" required>
+    <br>
+    <h2>מגדר</h2>
+        <br>
+          <select class="option" name="select">
+  <option disabled="disabled" selected="selected">מגדר</option>
+  <option value="women" >נקבה</option>
+  <option value="men">זכר</option>
+  <option value="else">אחר</option>
+  </select>
+        <br>
+
+  <h2>איך היית מגדיר את רמתך ביוגה?</h2>
+        <br>
+  <select class="option" name="select">
+  <option disabled="disabled" selected="selected">בחר את רמתך</option>
+  <option value="neverPractice">פעם ראשונה שאני מתרגל יוגה</option>
+  <option value="beginner">מתחיל</option>
+  <option value="advanced">מתרגל באופן קבוע</option>
+  </select>
+  <div class="injuries">
+      <br>
+  <h2>האם אתה סובל מפציעות?</h2>
+      <br>
+  <select class="option" name="select">
+    <option disabled="disabled" selected="selected">בחר את הפציעה ממנה אתה סובל</option>
+    <option value="neverPractice">פציעות ברכיים</option>
+   <option value="beginner">פציעת גב</option>
+    <option value="advanced">אחר</option>
+   </select>
+  <br>
+  <h2>במידה והינך סובל מפציעה, אנא פרט מהי פציעתך</h2>
+  <br>
+  <textarea class= "textBox" name="YourInjury" id="YourInjury" cols="50" rows="5"></textarea>
+  </div>
+        <br>
+  <h2>אם יש משהו נוסף שאתה מעוניין שאני אדע, זה המקום להוסיף אותו
+  </h2>   <br>
+
+  <textarea class= "textBox" name="YourAddition" id="YourAdditionContant" cols="50" rows="10"></textarea>
+  <br>
+  <button type="submit" onclick="welcomeAboardAlert()">הירשם</button>
+        <br>
+  </div>
+
+<script>
+function welcomeAboardAlert() {
+  alert("תודה על הרשמתך וברוכה הבאה :)\n מקווה שבקרוב אראה אותך בתרגולים\n ומחכה בקוצר רוח להכירך");
+}
+</script>
+
+ </div>
+</div>
+</div>
+
+</form>
+<br>
+    <br>
+<br>
+
+{% endblock %}
+{% block page_body_js %}
+
+    <script>
+    function validateForm() {
+    var x = document.forms["myForm"]["FirstName"].value;
+    var y = document.forms["myForm"]["LastName"].value;
+    var z = document.forms["myForm"]["PhoneNumber"].value;
+    var w = document.forms["myForm"]["Email"].value;
+    if (x == "" || x == null||y == "" || y == null||z == "" ||z == null||w == "" || w == null) {
+    alert("שדות החובה לא מלאים - יש למלאם");
+    return false;
+    }
+    }
+</script>
+{% endblock %}
+   {% block page_body_footer %}
+
+            {% endblock %}
