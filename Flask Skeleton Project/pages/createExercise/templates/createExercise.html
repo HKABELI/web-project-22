@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/Exercises.css') }}">
+
+    <meta charsey="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="yogaWorld/Asana.html"></script>
+    <!---------------script---------------->
+    <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
+    <script src="static/js/main.js"></script>
+    <!------script-->
+</head>
+
+<body>
+ <div class="addExForm">הוספת שיעור</div>
+   <div class="mainfo">
+       {% if exercise == null %}
+    <form action="/createExercise" method="post">
+    <div class= "addEx">
+      <h2>הוספת השיעור</h2>
+        <input class="input-box" name="name" type="text" placeholder="שם השיעור" required> <br>
+        <input class="input-box" name="fromTime" type="time" placeholder="תחילת שיעור" required> <br>
+        <input class="input-box" name="toTime" type="time" placeholder="סוף שיעור" required> <br>
+        <input class="input-box" name="dayOfWeek" type="number" max="7" min="1" placeholder="יום בשבוע" required> <br>
+        <input class="input-box" name="capacity" type="number" placeholder="כמות מקסימלית" required> <br>
+        <input class="input-box" name="address" type="text" placeholder="כתובת" required> <br>
+        <input type="submit" value="הוסף">
+    </div>
+    </form>
+       {%  else  %}
+        <form action="/editExercise" method="post">
+    <div class= "addEx">
+      <h2>עריכת שיעור</h2>
+        {% for exec  in exercise %}
+            <input type="hidden" name="exerciseID" value="{{ exec.exercisesID }}"/>
+            <input class="input-box" name="name" type="text" placeholder="שם השיעור" required value="{{ exec.name }}"> <br>
+            <input class="input-box" name="fromTime" type="time" placeholder="תחילת שיעור" required value="{{ exec.fromTime }}"><br>
+            <input class="input-box" name="toTime" type="time" placeholder="סוף שיעור" required value="{{ exec.toTime }}"><br>
+            <input class="input-box" name="dayOfWeek" type="number" max="7" min="1" placeholder="יום בשבוע" value="{{ exec.dayOfWeek }}" required><br>
+            <input class="input-box" name="capacity" type="number" placeholder="כמות מקסימלית" value="{{ exec.capacity }}" required><br>
+            <input class="input-box" name="address" type="text" placeholder="כתובת" required value="{{ exec.address }}"><br>
+            <input type="submit" value="ערוך">
+        {% endfor %}
+    </div>
+    </form>
+       {% endif %}
+
+   </div>
+
+</body>
+
+</html>

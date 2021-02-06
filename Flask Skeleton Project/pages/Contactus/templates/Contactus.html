@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{ url_for('Contactus.static',filename='css/Conuct_US_CSS.css') }}">
 {% endblock %}
 
-{% block page_body_js %}
+
     <!-----######## to move java script #########------->
     <!---------------script icons---------------->
     <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
     <!---------------script---------------->
 
     <!-----######## end js #########------->
-{% endblock %}
+
 
 {% block  page_body_main_content %}
     <body onload="conectMessage()">
@@ -77,4 +77,5 @@
     </body>
 {% endblock %}
 
-
+{% block page_body_js %}
+{% endblock %}

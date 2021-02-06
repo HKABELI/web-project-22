@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/Exercises.css') }}">
+
+    <meta charsey="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="yogaWorld/Asana.html"></script>
+    <!---------------script---------------->
+    <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
+    <script src="static/js/main.js"></script>
+    <!------script-->
+</head>
+<body>
+<h1>אדמין</h1>
+<h2>רשימת שיעורים </h2>
+<a href="/createExercise">הוסף שיעור חדש</a>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th >מספר שיעור</th>
+            <th>שם השיעור</th>
+            <th>יום בשבוע</th>
+            <th>ממתי </th>
+            <th>עד מתי</th>
+            <th>מספר מתאמנים מקסמלי</th>
+            <th>כתובת</th>
+            <th>ערוך</th>
+            <th>מחק</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for exercise in exercises_list %}
+            <tr>
+                <td>{{ exercise.exercisesID }}</td>
+                <td>{{ exercise.name }}</td>
+                <td>{{ exercise.dayOfWeek }}</td>
+                <td>{{ exercise.fromTime }}</td>
+                <td>{{ exercise.toTime }}</td>
+                <td>{{ exercise.capacity }}</td>
+                <td>{{ exercise.address }}</td>
+                <td><a href="/editExercise?id={{ exercise.exercisesID }}">עריכת שיעור</a></td>
+                <td><a href="/deleteExercise?id={{ exercise.exercisesID }}">מחיקת שיעור</a></td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

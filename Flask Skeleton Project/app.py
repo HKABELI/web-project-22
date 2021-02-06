@@ -26,6 +26,12 @@ app.register_blueprint(Contactus)
 from pages.Exercises.Exercises import Exercises
 app.register_blueprint(Exercises)
 
+from pages.createExercise.createExercise import createExercise
+app.register_blueprint(createExercise)
+
+from pages.Admin.Admin import Admin
+app.register_blueprint(Admin)
+
 from pages.Gallery.Gallery import Gallery
 app.register_blueprint(Gallery)
 

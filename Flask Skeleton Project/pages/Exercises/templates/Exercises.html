@@ -63,7 +63,7 @@
 
 
 <!------------------- calendar table--------------------->
-        <table id="calendar"  >
+  <table id="calendar"  >
           <!--calnder title-->
             <caption class="caption" id="tb_title"></caption>
 
@@ -81,335 +81,235 @@
           <!--  Schedule of lessons-->
             <tr class="days" >
               <!-- Day 7-->
-              <td class="day" > </div>
+              <td class="day">
                 <div class="date" id="date">ש'</div>
 
                 <!--lessons 1-->
+                  {% for exercise in exercises[7] %}
                 <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
                     <div class="event-desc">
-                    יוגה למתקמים
+                        {{exercise.name}}
                     </div>
                     <div class="event-time">
-                      7:00pm to 8:00pm
+                        {{exercise.fromTime}} to {{exercise.toTime}}
                     </div>
-
                          <!--jump box -->
-                         <a  onclick="functionPoP1()" class="btn"> פרטים </a>
+                    <a  onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="btn"> פרטים </a>
                         </div>
                              <!-- popup box message-->
-                        <div class="box" id="box1">
-                         <p class="title"> מספר המשתתפים:10  <br>
-                           מיקום השיעור: בן מתיתיהו 6 <br>
-                           מספר מקומות פנויים: 1 <br>
+                        <div class="box" id="box{{ exercise.exercisesID }}">
+                         <p class="title"> מספר המשתתפים:{{ exercise.capacity }}  <br>
+                           מיקום השיעור:  {{ exercise.address }} <br>
+                           מספר מקומות פנויים: {{ exercise.capacity - exercise.participants }} <br>
                            זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                           <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                           <a onclick="functionPoP1()" class="close">סגירה</a>
-                    </div>
-                    <!--lessons 2-->
-                    <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
-                      <div class="event-desc">
-                      יוגה למתקמים
-                      </div>
-                      <div class="event-time">
-                       8:00pm to 9:00pm
-                      </div>
-
-                             <!--jump box -->
-                             <a  onclick="functionPoP2()" class="btn"> פרטים </a>
-                            </div>
-                                 <!-- popup box message-->
-                            <div class="box" id="box2">
-                             <p class="title"> מספר המשתתפים:10  <br>
-                               מיקום השיעור: בן מתיתיהו 6 <br>
-                               מספר מקומות פנויים: 2 <br>
-                               זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                               <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                               <a onclick="functionPoP2()" class="close">סגירה</a>
-                      </div>
-                         <!--lessons 3-->
-                    <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
-                      <div class="event-desc">
-                      יוגה למתקמים
-                      </div>
-                      <div class="event-time">
-                      9:00pm to 10:00pm
-                      </div>
-
-                        <!--jump box -->
-                        <a  onclick="functionPoP3()" class="btn"> פרטים </a>
-                      </div>
-                           <!-- popup box message-->
-                      <div class="box" id="box3">
-                       <p class="title"> מספר המשתתפים:10  <br>
-                         מיקום השיעור: בן מתיתיהו 6 <br>
-                         מספר מקומות פנויים: 2 <br>
-                         זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                         <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                         <a onclick="functionPoP3()" class="close">סגירה</a>
-                      </div>
+                            {% if exercise.exercisesID in myExercises %}
+                                <span style="color:red">הינך רשום כבר לשיעור</span>
+                            {% elif not session.get("userEmail")  %}
+                                <span style="color:orange">הינך צריך להיות משתמש רשום קודם </span>
+                            {% elif  exercise.capacity - exercise.participants == 0 %}
+                                <span style="color:red">שיעור זה מלא </span>
+                            {% else %}
+                                <a class="Registration" href="/SignToExercise?id={{ exercise.exercisesID }}" >הרשמה</a>
+                            {% endif %}
+                            <a onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="close">סגירה</a>                        </div>
+                  {% endfor %}
               </td>
                <!-- Day 6-->
               <td class="day">
                 <div class="date" id="date">ו'</div>
-
                   <!--lessons 1-->
-                <div class="event"onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'">
-                    <div class="event-desc">
-                     יוגה למתחילים
-                    </div>
-                    <div class="event-time">
-                      7:00pm to 7:00pm
-                    </div>
-                     <!--jump box -->
-                     <a  onclick="functionPoP4()" class="btn"> פרטים </a>
-                    </div>
-                         <!-- popup box message-->
-                    <div class="box" id="box4">
-                     <p class="title"> מספר המשתתפים:10  <br>
-                       מיקום השיעור: בן מתיתיהו 6 <br>
-                       מספר מקומות פנויים: 2 <br>
-                       זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                       <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                       <a onclick="functionPoP4()" class="close">סגירה</a>
-                    </div>
-                     <!-- Day 5-->
+                  {% for exercise in exercises[6] %}
+                      <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
+                          <div class="event-desc">
+                              {{exercise.name}}
+                          </div>
+                          <div class="event-time">
+                              {{exercise.fromTime}} to {{exercise.toTime}}
+                          </div>
+                          <!--jump box -->
+                          <a  onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="btn"> פרטים </a>
+                      </div>
+                      <!-- popup box message-->
+                      <div class="box" id="box{{ exercise.exercisesID }}">
+                      <p class="title"> מספר המשתתפים:{{ exercise.capacity }}  <br>
+                              מיקום השיעור:  {{ exercise.address }} <br>
+                              מספר מקומות פנויים: {{ exercise.capacity - exercise.participants }} <br>
+                              זמן אחרון לביטול: 6 שעות לפני השיעור</p>
+                          {% if exercise.exercisesID in myExercises %}
+                              <span style="color:red">הינך רשום כבר לשיעור</span>
+                          {% elif not session.get("userEmail")  %}
+                              <span style="color:orange">הינך צריך להיות משתמש רשום קודם </span>
+                          {% elif  exercise.capacity - exercise.participants == 0 %}
+                              <span style="color:red">שיעור זה מלא </span>
+                          {% else %}
+                              <a class="Registration" href="/SignToExercise?id={{ exercise.exercisesID }}" >הרשמה</a>
+                          {% endif %}
+                          <a onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="close">סגירה</a>                      </div>
+                  {% endfor %}
               </td>
               <td class="day">
                 <div class="date" id="date">ה'</div>
-
                   <!--lessons 1-->
-                <div class="event"onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'">
-                    <div class="event-desc">
-                     יוגה למתחילים
-                    </div>
-                    <div class="event-time">
-                      7:00pm to 7:00pm
-                    </div>
-
-                      <!--jump box -->
-                      <a  onclick="functionPoP5()" class="btn"> פרטים </a>
-                    </div>
-                         <!-- popup box message-->
-                    <div class="box" id="box5">
-                     <p class="title"> מספר המשתתפים:10  <br>
-                       מיקום השיעור: בן מתיתיהו 6 <br>
-                       מספר מקומות פנויים: 3 <br>
-                       זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                       <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                       <a onclick="functionPoP5()" class="close">סגירה</a>
-                    </div>
-                      <!--lessons 2-->
-                      <div class="event"onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'">
-                        <div class="event-desc">
-                         יוגה למתקדמים
-                        </div>
-                        <div class="event-time">
-                          8:00pm to 9:00pm
-                        </div>
-
+                  {% for exercise in exercises[5] %}
+                      <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
+                          <div class="event-desc">
+                              {{exercise.name}}
+                          </div>
+                          <div class="event-time">
+                              {{exercise.fromTime}} to {{exercise.toTime}}
+                          </div>
                           <!--jump box -->
-                          <a  onclick="functionPoP6()" class="btn"> פרטים </a>
-                        </div>
-                             <!-- popup box message-->
-                        <div class="box" id="box6">
-                         <p class="title"> מספר המשתתפים:10  <br>
-                           מיקום השיעור: בן מתיתיהו 6 <br>
-                           מספר מקומות פנויים: 4 <br>
-                           זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                           <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                           <a onclick="functionPoP6()" class="close">סגירה</a>
-                        </div>
+                          <a  onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="btn"> פרטים </a>
+                      </div>
+                      <!-- popup box message-->
+                      <div class="box" id="box{{ exercise.exerciseID }}">
+                          <p class="title"> מספר המשתתפים:{{ exercise.capacity }}  <br>
+                              מיקום השיעור:  {{ exercise.address }} <br>
+                              מספר מקומות פנויים: {{ exercise.capacity - exercise.participants }} <br>
+                              זמן אחרון לביטול: 6 שעות לפני השיעור</p>
+                          <a class="Registration" href="/SignToExercise?id={{ exercise.exercisesID }}" >הרשמה</a>
+                          <a onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="close">סגירה</a>                      </div>
+                  {% endfor %}
               </td>
                 <!-- Day 4-->
               <td class="day">
                 <div class="date" id="date">ד'</div>
 
-                 <!--lessons 1-->
-                <div class="event"onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'">
-                    <div class="event-desc">
-                     יוגה למתחילים
-                    </div>
-                    <div class="event-time">
-                      7:00pm to 7:00pm
-                    </div>
 
-                     <!--jump box -->
-                     <a  onclick="functionPoP7()" class="btn"> פרטים </a>
-                    </div>
-                         <!-- popup box message-->
-                    <div class="box" id="box7">
-                     <p class="title"> מספר המשתתפים:10  <br>
-                       מיקום השיעור: בן מתיתיהו 6 <br>
-                       מספר מקומות פנויים: 5 <br>
-                       זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                       <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                       <a onclick="functionPoP7()" class="close">סגירה</a>
-
+                  <!--lessons 1-->
+                  {% for exercise in exercises[4] %}
+                      <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
+                          <div class="event-desc">
+                              {{exercise.name}}
+                          </div>
+                          <div class="event-time">
+                              {{exercise.fromTime}} to {{exercise.toTime}}
+                          </div>
+                          <!--jump box -->
+                          <a  onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="btn"> פרטים </a>
                       </div>
-
-                     <!--lessons 2-->
-                    <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
-                      <div class="event-desc">
-                      יוגה למתקמים
-                      </div>
-                      <div class="event-time">
-                        7:00pm to 8:00pm
-                      </div>
-
-                        <!--jump box -->
-                        <a  onclick="functionPoP8()" class="btn"> פרטים </a>
-                      </div>
-                           <!-- popup box message-->
-                      <div class="box" id="box8">
-                       <p class="title"> מספר המשתתפים:10  <br>
-                         מיקום השיעור: בן מתיתיהו 6 <br>
-                         מספר מקומות פנויים: 7 <br>
-                         זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                         <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                         <a onclick="functionPoP8()" class="close">סגירה</a>
-                      </div>
+                      <!-- popup box message-->
+                      <div class="box" id="box{{ exercise.exercisesID }}">
+                          <p class="title"> מספר המשתתפים:{{ exercise.capacity }}  <br>
+                              מיקום השיעור:  {{ exercise.address }} <br>
+                              מספר מקומות פנויים: {{ exercise.capacity - exercise.participants }} <br>
+                              זמן אחרון לביטול: 6 שעות לפני השיעור</p>
+                          {% if exercise.exercisesID in myExercises %}
+                              <span style="color:red">הינך רשום כבר לשיעור</span>
+                          {% elif not session.get("userEmail")  %}
+                              <span style="color:orange">הינך צריך להיות משתמש רשום קודם </span>
+                          {% elif  exercise.capacity - exercise.participants == 0 %}
+                              <span style="color:red">שיעור זה מלא </span>
+                          {% else %}
+                              <a class="Registration" href="/SignToExercise?id={{ exercise.exercisesID }}" >הרשמה</a>
+                          {% endif %}
+                          <a onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="close">סגירה</a>                      </div>
+                  {% endfor %}
               </td>
                 <!-- Day 3-->
               <td class="day">
                 <div class="date" id="date">ג'</div>
-
-                 <!--lessons 1-->
-                <div class="event"onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'">
-                  <div class="event-desc">שיעור פרטי </div>
-
-                  <div class="event-time">
-                    6:00pm to 7:30pm
-                  </div>
-
-                    <!--jump box -->
-                    <a  onclick="functionPoP9()" class="btn"> פרטים </a>
-                  </div>
-                       <!-- popup box message-->
-                  <div class="box" id="box9">
-                   <p class="title"> מספר המשתתפים:10  <br>
-                     מיקום השיעור: בן מתיתיהו 6 <br>
-                     מספר מקומות פנויים: 1 <br>
-                     זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                     <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                     <a onclick="functionPoP9()" class="close">סגירה</a>
-                </div>
-                 <!--lessons 2-->
-                <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
-                  <div class="event-desc">
-                  יוגה למתקמים
-                  </div>
-                  <div class="event-time">
-                    7:00pm to 8:00pm
-                  </div>
-
-                    <!--jump box -->
-                    <a  onclick="functionPoP10()" class="btn"> פרטים </a>
-                  </div>
-                       <!-- popup box message-->
-                  <div class="box" id="box10">
-                   <p class="title"> מספר המשתתפים:10  <br>
-                     מיקום השיעור: בן מתיתיהו 6 <br>
-                     מספר מקומות פנויים: 4 <br>
-                     זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                     <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                     <a onclick="functionPoP10()" class="close">סגירה</a>
-                  </div>
-                   <!--lessons 3-->
-                <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
-                  <div class="event-desc">
-                  יוגה למתקמים
-                  </div>
-                  <div class="event-time">
-                    8:00pm to 9:00pm
-                  </div>
-
-                    <!--jump box -->
-                    <a  onclick="functionPoP11()" class="btn"> פרטים </a>
-                  </div>
-                       <!-- popup box message-->
-                  <div class="box" id="box11">
-                   <p class="title"> מספר המשתתפים:10  <br>
-                     מיקום השיעור: בן מתיתיהו 6 <br>
-                     מספר מקומות פנויים: 3 <br>
-                     זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                     <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                     <a onclick="functionPoP11()" class="close">סגירה</a>
-                  </div>
+                  <!--lessons 1-->
+                  {% for exercise in exercises[3] %}
+                      <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
+                          <div class="event-desc">
+                              {{exercise.name}}
+                          </div>
+                          <div class="event-time">
+                              {{exercise.fromTime}} to {{exercise.toTime}}
+                          </div>
+                          <!--jump box -->
+                          <a  onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="btn"> פרטים </a>
+                      </div>
+                      <!-- popup box message-->
+                      <div class="box" id="box{{ exercise.exercisesID }}">
+                          <p class="title"> מספר המשתתפים:{{ exercise.capacity }}  <br>
+                              מיקום השיעור:  {{ exercise.address }} <br>
+                              מספר מקומות פנויים: {{ exercise.capacity - exercise.participants }} <br>
+                              זמן אחרון לביטול: 6 שעות לפני השיעור</p>
+                          {% if exercise.exercisesID in myExercises %}
+                              <span style="color:red">הינך רשום כבר לשיעור</span>
+                          {% elif not session.get("userEmail")  %}
+                              <span style="color:orange">הינך צריך להיות משתמש רשום קודם </span>
+                          {% elif  exercise.capacity - exercise.participants == 0 %}
+                              <span style="color:red">שיעור זה מלא </span>
+                          {% else %}
+                              <a class="Registration" href="/SignToExercise?id={{ exercise.exercisesID }}" >הרשמה</a>
+                          {% endif %}
+                          <a onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="close">סגירה</a>
+                      </div>
+                  {% endfor %}
               </td>
                 <!-- Day 2-->
               <td class="day">
                 <div class="date" id="date">ב'</div>
-
-                 <!--lessons 1-->
-                <div class="event"onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'">
-                    <div class="event-desc">
-                     יוגה למתחילים
-                    </div>
-                    <div class="event-time">
-                      9:00pm to 10:00pm
-                    </div>
-                    <!--jump box -->
-                    <a  onclick="functionPoP12()" class="btn"> פרטים </a>
-                  </div>
-                       <!-- popup box message-->
-                  <div class="box" id="box12">
-                   <p class="title"> מספר המשתתפים:10  <br>
-                     מיקום השיעור: בן מתיתיהו 6 <br>
-                     מספר מקומות פנויים: 0 <br>
-                     זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                     <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                     <a onclick="functionPoP12()" class="close">סגירה</a>
-                    </div>
+                  <!--lessons 1-->
+                  {% for exercise in exercises[2] %}
+                      <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
+                          <div class="event-desc">
+                              {{exercise.name}}
+                          </div>
+                          <div class="event-time">
+                              {{exercise.fromTime}} to {{exercise.toTime}}
+                          </div>
+                          <!--jump box -->
+                          <a onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="btn"> פרטים </a>                      </div>
+                      <!-- popup box message-->
+                      <div class="box" id="box{{ exercise.exercisesID }}">
+                          <p class="title"> מספר המשתתפים:{{ exercise.capacity }}  <br>
+                              מיקום השיעור:  {{ exercise.address }} <br>
+                              מספר מקומות פנויים: {{ exercise.capacity - exercise.participants }} <br>
+                              זמן אחרון לביטול: 6 שעות לפני השיעור</p>
+                          {% if exercise.exercisesID in myExercises %}
+                              <span style="color:red">הינך רשום כבר לשיעור</span>
+                          {% elif not session.get("userEmail")  %}
+                              <span style="color:orange">הינך צריך להיות משתמש רשום קודם </span>
+                          {% elif  exercise.capacity - exercise.participants == 0 %}
+                              <span style="color:red">שיעור זה מלא </span>
+                          {% else %}
+                              <a  class="Registration" href="/SignToExercise?id={{ exercise.exercisesID }}" >הרשמה</a>
+                          {% endif %}
+                          <a onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="close">סגירה</a>                      </div>
+                  {% endfor %}
               </td>
                 <!-- Day 1-->
               <td class="day">
                 <div class="date" id="date">א'</div>
-
-                 <!--lessons 1-->
-                <div class="event"onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'">
-                    <div class="event-desc">
-                     יוגה למתחילים
-                    </div>
-                    <div class="event-time">
-                      7:00pm to 7:00pm
-                    </div>
-
-                      <!--jump box -->
-                      <a  onclick="functionPoP13()" class="btn"> פרטים </a>
-                    </div>
-                         <!-- popup box message-->
-                    <div class="box" id="box13">
-                     <p class="title"> מספר המשתתפים:10  <br>
-                       מיקום השיעור: בן מתיתיהו 6 <br>
-                       מספר מקומות פנויים: 8 <br>
-                       זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                       <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                       <a onclick="functionPoP13()" class="close">סגירה</a>
-                    </div>
-                        <!--lessons 2-->
-                <div class="event"onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'">
-                  <div class="event-desc">
-                   יוגה למתקדמים
-                  </div>
-                  <div class="event-time">
-                    7:00pm to 7:00pm
-                  </div>
-                   <!--jump box -->
-                   <a  onclick="functionPoP14()" class="btn"> פרטים </a>
-                  </div>
-                       <!-- popup box message-->
-                  <div class="box" id="box14">
-                   <p class="title"> מספר המשתתפים:10  <br>
-                     מיקום השיעור: בן מתיתיהו 6 <br>
-                     מספר מקומות פנויים: 6 <br>
-                     זמן אחרון לביטול: 6 שעות לפני השיעור</p>
-                     <a onclick="seriousnessAlert()"class="Registration">הרשמה</a>
-                     <a onclick="functionPoP14()" class="close">סגירה</a>
-                  </div>
+                  <!--lessons 1-->
+                  {% for exercise in exercises[1] %}
+                      <div class="event" onmouseover="style.backgroundColor='lavender'" onmouseout="style.backgroundColor=' #e4f2f2'" >
+                          <div class="event-desc">
+                              {{exercise.name}}
+                          </div>
+                          <div class="event-time">
+                              {{exercise.fromTime}} to {{exercise.toTime}}
+                          </div>
+                          <!--jump box -->
+                          <a  onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="btn"> פרטים </a>
+                      </div>
+                      <!-- popup box message-->
+                      <div class="box" id="box{{ exercise.exercisesID }}">
+                          <p class="title"> מספר המשתתפים:{{ exercise.capacity }}  <br>
+                              מיקום השיעור:  {{ exercise.address }} <br>
+                              מספר מקומות פנויים: {{ exercise.capacity - exercise.participants }} <br>
+                              זמן אחרון לביטול: 6 שעות לפני השיעור</p>
+                          {% if exercise.exercisesID in myExercises %}
+                              <span style="color:red">הינך רשום כבר לשיעור</span>
+                          {% elif not session.get("userEmail")  %}
+                              <span style="color:orange">הינך צריך להיות משתמש רשום קודם </span>
+                          {% elif  exercise.capacity - exercise.participants == 0 %}
+                              <span style="color:red">שיעור זה מלא </span>
+                          {% else %}
+                              <a class="Registration" href="/SignToExercise?id={{ exercise.exercisesID }}" >הרשמה</a>
+                          {% endif %}
+                          <a onclick="functionPoP1('box{{ exercise.exercisesID }}')" class="close">סגירה</a>                      </div>
+                  {% endfor %}
               </td>
             </tr>
             <tr>
           </table>
+
+
 
           </div>
 {% endblock %}
