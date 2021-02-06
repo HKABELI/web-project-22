@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect
-from utilities.db.db_manager import dbManager
+from utilities.db.classes.users_db import UsersDb
 
 Registration = Blueprint('Registration', __name__,
                          static_folder='static',
@@ -22,12 +22,10 @@ def Registrat():
         password = request.form['password']
         phone_number = request.form['phone_number']
         # check if user is  not in user list
-        exist_query = "SELECT email as count FROM users where email = '%s'" % email
-        result = dbManager.fetch(exist_query)
+        result = UsersDb.is_email_exist(email)
+
         if len(result) == 0:
-            query = "INSERT INTO users(email,first_name,last_name,password,phone_number) VALUES ('%s','%s','%s','%s','%s')" % (
-                email, first_name, last_name, password, phone_number)
-            dbManager.commit(query)
+            UsersDb.insert_user(email, first_name, last_name, password, phone_number)
             return render_template('Registration.html', email=email, status='success')
         elif email == '':
             return render_template('Registration.html', email=email, status='no details')

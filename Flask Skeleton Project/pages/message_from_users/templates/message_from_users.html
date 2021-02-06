@@ -23,7 +23,25 @@
 <form action="/delete_message" method="GET">
     User email: <label><input name="email" type="text" >  </label>
     <input type="submit">
-
 </form>
+
+
+<h1>All message in specific month - select month:</h1>
+<form action="/month_message" method="GET">
+    Selected month: <label><input name="month" type="text" >  </label>
+    <input type="submit">
+</form>
+
+<ul>
+    {% if contact_us_month %}<!--Does the user exist in  contact_us?-->
+        {% for user in contact_us_month %}<!--if exist show the users message-->
+            <li>
+                email:{{ (user.email) }}<br/>  first name:{{ user.first_name }}<br/> last name:{{ user.phone_number }}<br/>message:{{ user.message }}<br/>message date:{{ user.message_date }}
+            <hr>
+            </li>
+        {% endfor %}
+    {% endif %}
+</ul>
+
 </body>
 </html>

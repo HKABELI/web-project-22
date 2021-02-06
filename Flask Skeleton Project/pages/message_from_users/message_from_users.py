@@ -1,5 +1,7 @@
-from flask import render_template, Blueprint, request, redirect
-from utilities.db.db_manager import dbManager
+from flask import render_template, Blueprint, request, redirect, url_for
+from utilities.db.classes.contact_us_db import ContactUsDb
+import json
+
 
 message_from_users = Blueprint('message_from_users', __name__,
                                static_folder='static',
@@ -7,18 +9,29 @@ message_from_users = Blueprint('message_from_users', __name__,
                                template_folder='templates'
                                )
 
+month_filter = None
+
 
 @message_from_users.route('/message_from_users')
 def message():
-    query = "select * from contact_us"
-    query_result = dbManager.fetch(query)
-    return render_template('message_from_users.html', contact_us=query_result)
+        query_result = ContactUsDb.get_all_messages()
+        return render_template('message_from_users.html', contact_us=query_result)
 
 
 @message_from_users.route('/delete_message', methods=['GET', 'POST'])
 def delete_message():
     if request.method == 'GET':
         email = request.args['email']
-        query = "DELETE FROM  contact_us WHERE email='%s'" % email
-        dbManager.commit(query)
+        ContactUsDb.delete_message_by_email(email)
     return redirect('/message_from_users')
+
+
+@message_from_users.route('/month_message')
+def month_message():
+    month = request.args['month']
+    month_filter = ContactUsDb.get_all_messages_in_month(month)
+    return render_template('message_from_users.html', contact_us_month=month_filter)
+
+
+
+

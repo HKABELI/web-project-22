@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect
-from utilities.db.db_manager import dbManager
+from utilities.db.classes.users_db import UsersDb
 
 users = Blueprint('users', __name__,
                  static_folder='static',
@@ -9,8 +9,7 @@ users = Blueprint('users', __name__,
 
 @users.route('/users')
 def users_list():
-    query = "select * from users"
-    query_result = dbManager.fetch(query)
+    query_result = UsersDb.get_all_users()
     return render_template('users.html', users=query_result)
 
 
@@ -18,6 +17,5 @@ def users_list():
 def delete_user():
     if request.method == 'GET':
         email = request.args['email']
-        query = "DELETE FROM  users WHERE email='%s'" % email
-        dbManager.commit(query)
+        UsersDb.delete_user_by_email(email)
     return redirect('/users')

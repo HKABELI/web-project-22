@@ -1,5 +1,6 @@
 from flask import render_template, Blueprint, request, redirect
-from utilities.db.db_manager import dbManager
+from utilities.db.classes.contact_us_db import ContactUsDb
+from utilities.db.classes.users_db import UsersDb
 
 Contactus = Blueprint('Contactus', __name__,
                       static_folder='static',
@@ -21,14 +22,10 @@ def contactus_db():
         phone_number = request.form['phone_number']
         message = request.form['message']
         # check if user is in user list
-        exist_query = "SELECT email AS count FROM users WHERE email = '%s'  AND first_name = '%s' AND  phone_number = '%s' " % (
-            email, first_name, phone_number)
-        result = dbManager.fetch(exist_query)
+        result = UsersDb.is_user_exist( email, first_name, phone_number)
         if len(result) > 0:
-            #if user in the user list
-            query = "INSERT INTO contact_us(email,first_name,phone_number,message) VALUES ('%s','%s','%s','%s')" % (
-                email, first_name, phone_number, message)
-            dbManager.commit(query)
+            # if user in the user list
+            ContactUsDb.insert_message(email, first_name, phone_number, message)
             return render_template('Contactus.html', email=email, status='success')
         elif email == '':
             return render_template('Contactus.html', email=email, status='no details')
