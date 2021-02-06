@@ -9,3 +9,5 @@ Login = Blueprint('Login', __name__,
 @Login.route('/Login')
 def index():
     return render_template('LoginPage.html')
+
+

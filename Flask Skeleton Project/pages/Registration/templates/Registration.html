@@ -8,25 +8,46 @@
         <br>
 {% endblock %}
 
+<!-------############### ------->
+ <script>
+        function welcomeAboardAlert() {
+            {% if status=='success' %}
+                alert("תודה על הרשמתך  :)\n מקווה שבקרוב  נתראה בתרגולים\n ");
+            {% elif status=='no details'%}
+                alert("אנא הוסף פרטים");
+            {% elif status=='incorrect details'%}
+                alert(" נראה שהפרטים שלך קיימים אצלנו,  אם קיימת תקלה פנה/י ליצירת קשר ");
+            {% endif %}
+        }
+    </script>
+
+<!-------############### ------->
+
+
 {% block page_body_main_content %}
-    <form class="myForm">
+
+    <body onload="welcomeAboardAlert()">
+
+
+    <form class="myForm" method="POST" action="/Registration" >
 
      <div class="regform">רישום לאתר</div>
 <div class="mainf">
-  <div action="/Registration" method="post">
+  <div>
       <div class= "name">
       <h2>שם מלא</h2>
       <br>
-      <input class="FirstName" name="FirstName" type="text" placeholder="שם פרטי" onfocus="contactFunction(this)" required><br>
-      <input class="FirstName" name="FirstName"  type="text" placeholder="שם משפחה" onfocus="contactFunction(this)" required><br>
+      <input class="FirstName" name="first_name" type="text" placeholder="שם פרטי" onfocus="contactFunction(this)" required><br>
+      <input class="FirstName" name="last_name"  type="text" placeholder="שם משפחה" onfocus="contactFunction(this)" required><br>
     </div>
     <h2>כתובת אימייל</h2>
     <br>
-    <input class="EmailAddress" name="LastName" type="text" required><br>
-
+    <input class="EmailAddress" name="email" type="email" placeholder="כתובת אימייל" required ><br>
+      <h2>סיסמא</h2>
+     <input class="Password"  name="password"  type="password"  placeholder="סיסמא" required><br>
     <h2>מספר טלפון</h2>
     <br>
-    <input class="PhoneNumber" name="Email" type="text" name="PhoneNumber" required>
+    <input class="PhoneNumber"  type="number" name="phone_number"  placeholder=" מספר טלפון"required>
     <br>
     <h2>מגדר</h2>
         <br>
@@ -70,13 +91,13 @@
   <button type="submit" onclick="welcomeAboardAlert()">הירשם</button>
         <br>
   </div>
-
+<!---
 <script>
 function welcomeAboardAlert() {
   alert("תודה על הרשמתך וברוכה הבאה :)\n מקווה שבקרוב אראה אותך בתרגולים\n ומחכה בקוצר רוח להכירך");
 }
 </script>
-
+--->
  </div>
 </div>
 </div>
@@ -85,6 +106,7 @@ function welcomeAboardAlert() {
 <br>
     <br>
 <br>
+</body>
 
 {% endblock %}
 {% block page_body_js %}

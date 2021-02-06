@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>message from users</title>
+</head>
+<body>
+<h1>All the message:</h1>
+<ul>
+    {% if contact_us %}<!--Does the user exist in  contact_us?-->
+        {% for user in contact_us %}<!--if exist show the users message-->
+            <li>
+                email:{{ (user.email) }}<br/>  first name:{{ user.first_name }}<br/> last name:{{ user.phone_number }}<br/>message:{{ user.message }}<br/>message date:{{ user.message_date }}
+            <hr>
+            </li>
+        {% endfor %}
+    {% endif %}
+</ul>
+
+
+
+<h1>Delete user message - select email:</h1>
+<form action="/delete_message" method="GET">
+    User email: <label><input name="email" type="text" >  </label>
+    <input type="submit">
+
+</form>
+</body>
+</html>

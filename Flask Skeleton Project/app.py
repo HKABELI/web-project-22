@@ -1,8 +1,13 @@
-from flask import Flask
+
+from flask import Flask, redirect, url_for, render_template, blueprints, jsonify
+from flask import request, session
+from datetime import timedelta
+import mysql.connector
 
 
 ###### App setup
 app = Flask(__name__)
+# app.secret_key = '22'
 # app.config.from_pyfile('settings.py')
 
 ###### Pages
@@ -38,6 +43,14 @@ app.register_blueprint(Registration)
 
 from pages.Yoga.Yoga import Yoga
 app.register_blueprint(Yoga)
+
+from pages.message_from_users.message_from_users import message_from_users
+app.register_blueprint(message_from_users)
+
+from pages.users.users import users
+app.register_blueprint(users)
+
+
 # ## Page error handlers
 # from pages.page_error_handlers.page_error_handlers import page_error_handlers
 # app.register_blueprint(page_error_handlers)

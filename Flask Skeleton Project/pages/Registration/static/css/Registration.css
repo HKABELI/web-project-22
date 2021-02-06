@@ -65,7 +65,7 @@ h2{
 }
 
 
-.FirstName ,.PhoneNumber{
+.FirstName ,.PhoneNumber,.Password{
     display: block;
   margin-right: auto;
   margin-left: auto;

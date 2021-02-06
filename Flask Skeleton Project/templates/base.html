@@ -27,8 +27,8 @@ Base page blocks:
 -- page_body_js
  #}
 <!DOCTYPE html>
- <html lang="{{ page_lang|default("en", true) }}">
-    <head>
+<html lang="{{ page_lang|default("en", true) }}">
+<head>
     {% block page_head %}
         {# Title #}
         <title> {{ page_head_title|default('יוגה אצל הדר', true) }}</title>
@@ -36,9 +36,9 @@ Base page blocks:
         {# Meta tags #}
         {% block page_head_meta %}
             <base href="/"/>
-               <meta charsey="UTF-8">
-               <meta name="viewport" content="width=device-width,initial-scale=1.0">
-                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <meta charsey="UTF-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
             {% block page_head_meta_extra %}{% endblock %}
         {% endblock %}
 
@@ -54,107 +54,120 @@ Base page blocks:
 
         {% endblock %}
     {% endblock %}
-    </head>
-    <body>
-        {% block page_body_content %}
+</head>
+<body>
+{% block page_body_content %}
 
-            {# Header #}
-            {% block page_body_header %}
-                <header class="page-header">
-                    {% block page_body_header_content %}
+    {# Header #}
+    {% block page_body_header %}
+        <header class="page-header">
+            {% block page_body_header_content %}
 
-                        {# Main Menu #}
-                        {% block page_body_header_content__main_menu %}
-                                {% block page_body_header_content__main_menu_content %}
-                                        {% block page_body_header_content__main_menu_content_links %}
-                                                <div class="main">
-                <!--- navigation---->
-                <div class="headLogo" id="headLogo"> <img id="logo" src="{{ url_for('static', filename='photos/Logo.jpeg' )}}" alt="" >
+                {# Main Menu #}
+                {% block page_body_header_content__main_menu %}
+                    {% block page_body_header_content__main_menu_content %}
+                        {% block page_body_header_content__main_menu_content_links %}
+                            <div class="main">
+                            <!--- navigation---->
+                            <div class="headLogo" id="headLogo"><img id="logo"
+                                                                     src="{{ url_for('static', filename='photos/Logo.jpeg' ) }}"
+                                                                     alt="">
 
-                <a id="Reg" href="{{ url_for('Login.index') }}" target='_blank'  >התחבר / הרשמה  </a>
-                <br>
-                <br>
-                </div>
-                                            <nav class="nav">
-                    <div class="nav-menu flex-row">
-                        <div class="nav-brand">
-                            <a href={{ url_for('Home.index') }}>יוגה אצל הדר</a>
-                        </div>
-                        <div class="toggle-collapse" >
-                            <div class="toggle-icons" >
-                                <span style="font-size:30px;cursor:pointer" onclick="openNav()" >&#9776; </span>                </div>
-                        </div>
-                        <div class="menu">
-                            <ul class ="nav-items">
-                                <li class= "nav-link">  <a class= "links" href={{ url_for('Contactus.contactus') }}>צור קשר</a>      </li>
-                                <li class= "nav-link">  <a class= "links"href="{{ url_for('Gallery.index') }}">גלריה</a>        </li>
-                                 <div onclick="openNavi()">
-                                <li class= "nav-link" >  <a href="#">עולם היוגה </a>
-                                <button class="dropbtn" > <i class="fa fa-caret-down"></i> </button>
-                                <ul id = "subYoga">
-                                </ul>
-                                </li>
-                                </div>
-                                <li class= "nav-link">  <a class= "links" href="{{ url_for('Exercises.index') }}">תרגולים</a>      </li>
-                                <li class= "nav-link">  <a class= "links" href="{{ url_for('Aboutme.index') }}">קצת עלי</a>      </li>
-                                <li class= "nav-link">  <a class= "links" href= "{{ url_for('Home.index') }}">דף בית</a>     </li>
-                                </ul>
-
+                                <a id="Reg" href="{{ url_for('Login.index') }}" target='_blank'>התחבר / הרשמה </a>
+                                <br>
+                                <br>
                             </div>
-                        <div class="social text-gray">
-                            <a class="icon" href="https://www.facebook.com/hkabeli" target='_blank'><i class="fab fa-facebook"></i></a>
-                            <a class="icon" href="https://www.instagram.com/hkabeli/"target='_blank'><i class="fab fa-instagram"></i></a>
-                            <a class="icon" href="whatsapp://send?abid=0544481882&text=Hello%2C%20World!" target='_blank'><i class="fab fa-whatsapp"></i></a>
-                            <a class="icon" href="https://www.youtube.com/channel/UC8NU_MXzI_VhqkxeyuHZAow" target='_blank'><i class="fab fa-youtube"></i></a>
+                            <nav class="nav">
+                                <div class="nav-menu flex-row">
+                                    <div class="nav-brand">
+                                        <a href={{ url_for('Home.index') }}>יוגה אצל הדר</a>
+                                    </div>
+                                    <div class="toggle-collapse">
+                                        <div class="toggle-icons">
+                                            <span style="font-size:30px;cursor:pointer"
+                                                  onclick="openNav()">&#9776; </span></div>
+                                    </div>
+                                    <div class="menu">
+                                        <ul class="nav-items">
+                                            <li class="nav-link"><a class="links"
+                                                                    href={{ url_for('Contactus.contactus') }}>צור
+                                                קשר</a></li>
+                                            <li class="nav-link"><a class="links" href="{{ url_for('Gallery.index') }}">גלריה</a>
+                                            </li>
+                                            <div onclick="openNavi()">
+                                                <li class="nav-link"><a href="#">עולם היוגה </a>
+                                                    <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
+                                                    <ul id="subYoga">
+                                                    </ul>
+                                                </li>
+                                            </div>
+                                            <li class="nav-link"><a class="links"
+                                                                    href="{{ url_for('Exercises.index') }}">תרגולים</a>
+                                            </li>
+                                            <li class="nav-link"><a class="links" href="{{ url_for('Aboutme.index') }}">קצת
+                                                עלי</a></li>
+                                            <li class="nav-link"><a class="links" href="{{ url_for('Home.index') }}">דף
+                                                בית</a></li>
+                                        </ul>
 
-                        </div>
-                        </div>
+                                    </div>
+                                    <div class="social text-gray">
+                                        <a class="icon" href="https://www.facebook.com/hkabeli" target='_blank'><i
+                                                class="fab fa-facebook"></i></a>
+                                        <a class="icon" href="https://www.instagram.com/hkabeli/" target='_blank'><i
+                                                class="fab fa-instagram"></i></a>
+                                        <a class="icon" href="whatsapp://send?abid=0544481882&text=Hello%2C%20World!"
+                                           target='_blank'><i class="fab fa-whatsapp"></i></a>
+                                        <a class="icon" href="https://www.youtube.com/channel/UC8NU_MXzI_VhqkxeyuHZAow"
+                                           target='_blank'><i class="fab fa-youtube"></i></a>
 
-
+                                    </div>
+                                </div>
 
 
                             </nav>
 
-                                        {% endblock %}
-
-                                {% endblock %}
-
                         {% endblock %}
 
                     {% endblock %}
-                                       </div>
- </header>
+
+                {% endblock %}
+
             {% endblock %}
+            </div>
+        </header>
+    {% endblock %}
 
-            {# Main #}
-            {% block page_body_main %}
-                <main class="page-main">
-                  {% block page_body_main_content %}
-                  {% endblock %}
-                </main>
+    {# Main #}
+    {% block page_body_main %}
+        <main class="page-main">
+            {% block page_body_main_content %}
+
             {% endblock %}
+        </main>
+    {% endblock %}
 
-            {# Footer #}
-            {% block page_body_footer %}
-                <footer class="page-footer">
-                  {% block page_body_footer_content %}
-                       <h3>
-                              054-4481882
-                              | בן מתתיהו 6, באר שבע<br>
-                              © by hadar kabeli
-                              </h3>
-                  {% endblock %}
-                </footer>
+    {# Footer #}
+    {% block page_body_footer %}
+        <footer class="page-footer">
+            {% block page_body_footer_content %}
+                <h3>
+                    054-4481882
+                    | בן מתתיהו 6, באר שבע<br>
+                    © by hadar kabeli
+                </h3>
             {% endblock %}
+        </footer>
+    {% endblock %}
 
-        {% endblock %}
+{% endblock %}
 
-        {# JS #}
-                <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-                <script src="{{ url_for('static', filename='js/openslides.js') }}"></script>
-                 <script src="{{ url_for('static', filename='js/base.js') }}"></script>
-        {% block page_body_js %} {% endblock %}
+{# JS #}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/openslides.js') }}"></script>
+<script src="{{ url_for('static', filename='js/base.js') }}"></script>
+{% block page_body_js %} {% endblock %}
 
 
-    </body>
+</body>
 </html>

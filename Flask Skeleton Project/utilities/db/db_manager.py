@@ -43,7 +43,7 @@ class DBManager:
                 self.__connection = mysql.connector.connect(**DB)
                 self.__cursor = self.__connection.cursor(named_tuple=True)
         except mysql.connector.Error as error:
-            print("Connection failed with error {}".format(error))
+            print("Connection failed with error {}".format(str(error)))
 
     def __execute(self, query, args=()):
         # Executes a given query with given args, if provided.

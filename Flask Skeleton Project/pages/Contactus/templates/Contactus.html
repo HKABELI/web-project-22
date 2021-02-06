@@ -1,52 +1,80 @@
 {% extends 'base.html' %}
 {% block page_head_css %}
-         <link rel="stylesheet" href="{{ url_for('Contactus.static',filename='css/Conuct_US_CSS.css') }}">
+    <link rel="stylesheet" href="{{ url_for('Contactus.static',filename='css/Conuct_US_CSS.css') }}">
 {% endblock %}
 
-{% block page_body_main_content %}
-    <div class="Box">
-    <img class="img" src="{{ url_for('Contactus.static', filename='photos/buda.jpeg' )}}" alt="">
-    <h2 class="title">צרו קשר</h2>
-    <form method="POST" action="/Contact_Us">
-        <!--contact us boxes+input event change background color-->
-        <input type="username" class="input-box" placeholder="הכנס שם" dir="rtl" onfocus="contactFunction(this)">
-        <input type="useremail" class="input-box" placeholder="הכנס אימייל" dir="rtl" onfocus="contactFunction(this)">
-        <input type="usermobile" class="input-box" placeholder="הכנס נייד" dir="rtl" onfocus="contactFunction(this)">
-        <input type="usermessage" class="input-message" placeholder="כתוב הודעה" dir="rtl"
-               onfocus="contactFunction(this)">
-        <!--btn-->
-        <batton onclick="conectMessage()" class="btn"> שלח</batton>
+{% block page_body_js %}
+    <!-----######## to move java script #########------->
+    <!---------------script icons---------------->
+    <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
 
-    </form>
+    <!------script-->
 
-
-    <hr>
-    <!--icons-->
-    <div class="social text-gray">
-        <a class="icon" href="https://www.facebook.com/hkabeli" target='_blank'><i class="fab fa-facebook"></i></a>
-        <a class="icon" href="https://www.instagram.com/hkabeli/" target='_blank'><i class="fab fa-instagram"></i></a>
-        <a class="icon" href="whatsapp://send?abid=0544481882&text=Hello%2C%20World!" target='_blank'><i
-                class="fab fa-whatsapp"></i></a>
-        <a class="icon" href="https://www.youtube.com/channel/UC8NU_MXzI_VhqkxeyuHZAow" target='_blank'><i
-                class="fab fa-youtube"></i></a>
-
-
-    </div>
-
-
-</div>
-{% endblock %}
-
-{% block page_body_js%}
- <script>
+    <!--script for Registration in apopup message -->
+    <script>
         function conectMessage() {
-            {% if username %}
+            {% if status=='success' %}
                 alert("ההודעה נשלחה בהצלחה");
-            {% else %}
-                alert(" אנו מתנצלים, ההודעה לא נשלחה , הירשם בבקשה לאתר  ");
+            {% elif status=='no details'%}
+                alert("אנא הוסף פרטים");
+            {% elif status=='incorrect details'%}
+                alert(" אנו מתנצלים, ההודעה לא נשלחה , הירשם בבקשה לאתר");
             {% endif %}
         }
     </script>
+    <!------script-->
+    <!------script-->
 
+    <script>
+        function contactFunction(x) {
+            x.style.background = "lightyellow";
+        }
 
+        function changebutton(x) {
+            x.style.background = "lightyellow";
+        }
+    </script>
+    <!---------------script---------------->
+
+    <!-----######## end js #########------->
 {% endblock %}
+
+{% block  page_body_main_content %}
+    <body onload="conectMessage()">
+    <div class="Box">
+        <img class="img" src="{{ url_for('Contactus.static', filename='photos/buda.jpeg' ) }}" alt="">
+        <h2 class="title">צרו קשר</h2>
+        <form method="POST" action="/Contactus">
+            <!--contact us boxes+input event change background color-->
+            <input name="email" type="email" class="input-box" placeholder="הכנס אימייל" dir="rtl" onfocus="contactFunction(this)">
+            <input name="first_name" type="text" class="input-box"  placeholder="הכנס שם" dir="rtl" onfocus="contactFunction(this)">
+            <input name="phone_number"  type="number" class="input-box" placeholder="הכנס נייד" dir="rtl"
+                   onfocus="contactFunction(this)">
+            <input name="message" type="text" class="input-message" placeholder="כתוב הודעה" dir="rtl"
+                   onfocus="contactFunction(this)">
+            <!--btn-->
+            {#        <input type="submit" onclick="conectMessage()">#}
+            <input type="submit" value="שלח" class="btn">
+            <!-- <batton onclick="conectMessage()" class="btn"> שלח</batton>-->
+
+        </form>
+
+
+        <hr>
+        <!--icons-->
+        <div class="social text-gray">
+            <a class="icon" href="https://www.facebook.com/hkabeli" target='_blank'><i class="fab fa-facebook"></i></a>
+            <a class="icon" href="https://www.instagram.com/hkabeli/" target='_blank'><i
+                    class="fab fa-instagram"></i></a>
+            <a class="icon" href="whatsapp://send?abid=0544481882&text=Hello%2C%20World!" target='_blank'><i
+                    class="fab fa-whatsapp"></i></a>
+            <a class="icon" href="https://www.youtube.com/channel/UC8NU_MXzI_VhqkxeyuHZAow" target='_blank'><i
+                    class="fab fa-youtube"></i></a>
+
+        </div>
+
+    </div>
+    </body>
+{% endblock %}
+
+
