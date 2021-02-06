@@ -5,18 +5,21 @@
 
 {% block page_body_main_content %}
     <div class="loginBox">
+{% if message %}
+        <span style="color:red">{{  message }}</span>
+    {% endif %}
     <h2 class="title.su">הרשמה</h2>
 
-    <form method="POST" action="/Contact_Us">
+  <form method="POST" action="/Login">
         <!--login boxes+input event change background color-->
-        <input type="email" class="input-box" placeholder="הכנס אימייל" onfocus="contactFunction(this)">
-        <input type="password" class="input-box" placeholder="הכנס סיסמא" onfocus="contactFunction(this)">
-        <p><span><input type="checkbox" onfocus="contactFunction(this)">אני מסכים לתנאי השירות</p>
-        <button type="button" class="login-btn" onclick="changebutton(this)">התחברות</button>
+        <input type="email" name="email" class="input-box" placeholder="הכנס אימייל" onfocus="contactFunction(this)">
+        <input type="password" name="password" class="input-box" placeholder="הכנס סיסמא" onfocus="contactFunction(this)">
+        <p><span> <input type="checkbox" onfocus="contactFunction(this)"> </span>אני מסכים לתנאי השירות</p>
+        <button type="submit" class="login-btn" onclick="changebutton(this)">התחברות</button>
         <hr>
         <p class="or">או</p>
-        <button type="button" class="login-btn" onclick="changebutton(this)">התחבר בעזרת פייסבוק</button>
-        <p>יש לך חשבון? </p><a class="sign-in-link" href="/Registration">הירשם</a>
+        <button type="submit" class="login-btn" >">התחבר בעזרת פייסבוק</button>
+        <p>יש לך חשבון? </p><a class="sign-in-link" href="/Registration">התחבר</a>
     </form>
 </div>
 {% endblock %}
