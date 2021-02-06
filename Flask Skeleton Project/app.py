@@ -26,6 +26,9 @@ app.register_blueprint(Contactus)
 from pages.Exercises.Exercises import Exercises
 app.register_blueprint(Exercises)
 
+from pages.SignToExercise.SignToExercise import SignToExercise
+app.register_blueprint(SignToExercise)
+
 from pages.createExercise.createExercise import createExercise
 app.register_blueprint(createExercise)
 
