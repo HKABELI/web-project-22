@@ -2,6 +2,8 @@ from flask import Blueprint, render_template
 from flask import Flask, redirect, url_for, render_template, request, session
 from utilities.db.db_manager import dbManager
 import mysql.connector
+from utilities.db.classes.users_signed_exercises import UsersSigned
+from utilities.db.classes.exercises import EXdb
 
 SignToExercise = Blueprint('SignToExercise', __name__,
                            static_folder='static',
@@ -13,16 +15,14 @@ SignToExercise = Blueprint('SignToExercise', __name__,
 @SignToExercise.route('/SignToExercise', methods=['GET', 'POST'])
 def SignToExercise1():
     if request.method == "POST":
-        insertNewAppointementQuery = "INSERT INTO signedExerciseUsers (exercise_id,userEmail) values(%s,'%s')" % (
-            request.form["exerciseID"], session.get("userEmail"))
-        print(insertNewAppointementQuery)
-        query1 = dbManager.commit(insertNewAppointementQuery)
+        exerciseID = request.form["exerciseID"]
+        userEmail = session.get("userEmail")
+        query1= UsersSigned.sign_to_exercise(exerciseID,userEmail)
         if (query1):
             return redirect(url_for('Exercises.index'))
         else:
             return render_template("SignToExercise.html", message="something when wrong please contact administrator")
     else:
-        selectedExercise = ("SELECT * FROM exercises e where e.exercisesID='%s'" %
-                            request.args.get("id"))
-        result = dbManager.fetch(selectedExercise)
+        exerciseID=request.args.get("id")
+        result=EXdb.delete_exercise_by_id(exerciseID)
         return render_template('SignToExercise.html', exercise=result)

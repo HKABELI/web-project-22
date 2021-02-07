@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from flask import Flask, redirect, url_for, render_template, request, session
 from utilities.db.db_manager import dbManager
+from utilities.db.classes.exercises import EXdb
 import mysql.connector
 
 createExercise = Blueprint('createExercise', __name__,
@@ -13,12 +14,13 @@ createExercise = Blueprint('createExercise', __name__,
 @createExercise.route('/createExercise', methods=['GET', 'POST'])
 def createExercise1():
     if request.method == "POST":
-        insert_exercise_query = ("INSERT INTO exercises (name,fromTime,"
-                                 " toTime,dayOfWeek,capacity,address) VALUES ("
-                                 "'%s','%s','%s',%s,%s,'%s')" %
-                                 (request.form["name"], request.form["fromTime"], request.form["toTime"],
-                                  request.form["dayOfWeek"], request.form["capacity"], request.form["address"]))
-        result = dbManager.commit(insert_exercise_query)
+        name = request.form['name']
+        fromTime = request.form['fromTime']
+        toTime = request.form['toTime']
+        dayOfWeek = request.form['dayOfWeek']
+        capacity = request.form['capacity']
+        address = request.form['address']
+        result = EXdb.add_exercises(name, fromTime, toTime, dayOfWeek, capacity, address)
         if (result):
             return redirect(url_for('Admin.Admin1'))
     else:
@@ -26,35 +28,29 @@ def createExercise1():
 
 
 @createExercise.route('/editExercise', methods=['GET', 'POST'])
-
-
 def editExercise():
     if request.method == "POST":
-        update_exercise_query = ("UPDATE exercises  SET name='%s',"
-                                 "fromTime='%s',"
-                                 " toTime='%s',"
-                                 "dayOfWeek=%s,"
-                                 "capacity=%s,"
-                                 "address='%s' WHERE exercisesID=%s" %
-                                 (request.form["name"], request.form["fromTime"], request.form["toTime"],
-                                  request.form["dayOfWeek"], request.form["capacity"], request.form["address"],
-                                  request.form["exerciseID"]))
-        result = dbManager.commit(update_exercise_query)
+        name = request.form['name']
+        fromTime = request.form['fromTime']
+        toTime = request.form['toTime']
+        dayOfWeek = request.form['dayOfWeek']
+        capacity = request.form['capacity']
+        address = request.form['address']
+        result = EXdb.edit_exercises(name, fromTime, toTime, dayOfWeek, capacity, address)
         if (result):
             return redirect(url_for('Admin.Admin1'))
     else:
         exerciseID = request.args.get("id")
-        select_exerciseQuery = ("SELECT * FROM exercises where exercisesID=%s" % exerciseID)
-        result = dbManager.fetch(select_exerciseQuery)
+        result= EXdb.display_exercise_by_id(exerciseID)
         return render_template('createExercise.html', exercise=result)
 
 
 @createExercise.route('/deleteExercise', methods=['GET', 'POST'])
-
-
 def deleteExercise():
-    exerciseID = request.args.get("id")
-    if (exerciseID):
-        delete_query = "DELETE FROM exercises where exercisesID=%s" % exerciseID
-        result = dbManager.commit(delete_query)
+    if request.method == 'GET':
+        exerciseID = request.args.get("id")
+        EXdb.delete_exercise_by_id(exerciseID)
     return redirect(url_for('Admin.Admin1'))
+
+
+

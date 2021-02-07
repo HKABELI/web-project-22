@@ -33,3 +33,10 @@ class UsersDb:
         result = dbManager.fetch(exist_query)
         return result
 
+
+    @staticmethod
+    def is_email_exist_and_password_correct(email, password):
+        exist_query = "SELECT * FROM users where email = '%s' and password='%s' " % (
+        email, password)
+        result = dbManager.fetch(exist_query)
+        return result
