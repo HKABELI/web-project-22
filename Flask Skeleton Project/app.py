@@ -59,6 +59,8 @@ app.register_blueprint(message_from_users)
 from pages.users.users import users
 app.register_blueprint(users)
 
+from pages.yogaworld.yogaworld import yogaworld
+app.register_blueprint(yogaworld)
 
 # ## Page error handlers
 # from pages.page_error_handlers.page_error_handlers import page_error_handlers
@@ -67,5 +69,9 @@ app.register_blueprint(users)
 
 ###### Components
 # Main menu
-from components.main_menu.main_menu import main_menu
-app.register_blueprint(main_menu)
+
+from components.header.header import header
+app.register_blueprint(header)
+
+from components.footer.footer import footer
+app.register_blueprint(footer)
