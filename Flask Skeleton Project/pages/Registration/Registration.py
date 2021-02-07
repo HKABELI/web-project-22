@@ -26,7 +26,7 @@ def Registrat():
 
         if len(result) == 0:
             UsersDb.insert_user(email, first_name, last_name, password, phone_number)
-            return render_template('Registration.html', email=email, status='success')
+            return render_template('Home.html', email=email, status='success')
         elif email == '':
             return render_template('Registration.html', email=email, status='no details')
         else:

@@ -15,7 +15,10 @@
                 <!--- navigation---->
                       <!--- navigation---->
                 <div class="headLogo" id="headLogo"> <img id="logo" src="{{ url_for('static', filename='photos/Logo.jpeg' )}}" alt="" >
-                <a id="Reg" href="{{ url_for('Login.index') }}" target='_blank'  >התחבר / הרשמה  </a>
+                <a id="Reg" href="{{ url_for('Login.index') }}" target='_blank'  >התחבר </a>
+                    {% if(session.get("fullname")) %}
+                        <h2>שלום , {{ session.get("fullname") }}</h2>
+                    {% endif %}
                 <br>
                 <br>
                 </div>
@@ -65,7 +68,7 @@
                                         <a href="{{ url_for('Exercises.index') }}">תרגולים</a>
                                         <a href="{{ url_for('Gallery.index') }}">גלריה</a>
                                         <a href="{{ url_for('Contactus.contactus') }}">צור קשר</a>
-                                        <a href="{{ url_for('Login.index') }}" target='_blank' >התחבר/הרשם</a>
+                                        <a href="{{ url_for('Login.index') }}" target='_blank' >התחבר</a>
 
 
 

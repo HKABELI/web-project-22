@@ -3,7 +3,29 @@
     <link rel="stylesheet" href="{{ url_for('Home.static',filename='css/Home.css') }}">
 {% endblock %}
 
+
+{% block page_body_js%}
+    <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
+    <script>
+    function welcomeAboardAlert() {
+        {% if status=='success' %}
+            alert("תודה על הרשמתך  :)\n מקווה שבקרוב  נתראה בתרגולים\n ");
+        {% elif status=='no details'%}
+            alert("אנא הוסף פרטים");
+        {% elif status=='incorrect details'%}
+            alert(" נראה שהפרטים שלך קיימים אצלנו,  אם קיימת תקלה פנה/י ליצירת קשר ");
+        {% endif %}
+    }
+</script>
+
+{% endblock %}
+
+
+
+
 {% block page_body_main_content %}
+
+    <body onload="welcomeAboardAlert()">
          <div class="welc">
     <p id="welcomP">
         <b>ברוכים הבאים מתרגלים יקרים, </b> <br> <br>
@@ -83,11 +105,8 @@
 
         </div>        </div>
 
+    </body>
    <script src="{{url_for('Home.static',filename= 'js/slides.js')}}"></script>
         <script>            var slideIndex = 1;             showSlides(slideIndex);         </script>
 {% endblock %}
 
-{% block page_body_js%}
-    <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
-
-{% endblock %}
