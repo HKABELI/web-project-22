@@ -22,7 +22,7 @@ def contactus_db():
         phone_number = request.form['phone_number']
         message = request.form['message']
         # check if user is in user list
-        result = UsersDb.is_user_exist( email, first_name, phone_number)
+        result = UsersDb.is_user_exist(email, first_name, phone_number)
         if len(result) > 0:
             # if user in the user list
             ContactUsDb.insert_message(email, first_name, phone_number, message)

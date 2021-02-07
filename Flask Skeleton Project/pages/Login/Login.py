@@ -15,7 +15,7 @@ def index():
     return render_template('LoginPage.html')
 
 
-@Login.route('/Login', methods=['GET', 'POST'])
+@Login.route('/LoginPage', methods=['GET', 'POST'])
 def Login_Page():
     if request.method == 'POST':
         email = request.form["email"]

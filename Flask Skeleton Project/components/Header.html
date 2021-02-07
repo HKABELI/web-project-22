@@ -13,12 +13,15 @@
 
 <div class="main">
     <!--- navigation---->
+
     <div class="headLogo" id="headLogo"><img id="logo" src="{{ url_for('static', filename='photos/Logo.jpg' ) }}"
                                              alt="">
+
+        <a id="Reg" href="{{ url_for('Login_Page') }}" target='_blank'>התחבר
         {% if(session.get("fullname")) %}
-            <h2>שלום , {{ session.get("fullname") }}</h2>
+           <h2>שלום , {{ session.get("fullname") }}</h2>
         {% endif %}
-        <a id="Reg" href="{{ url_for('Login_Page') }}" target='_blank'>התחבר </a>
+        </a>
 
         <br>
         <br>

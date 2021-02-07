@@ -7,7 +7,7 @@ import mysql.connector
 
 ###### App setup
 app = Flask(__name__)
-app.secret_key = 'mysecretkey'
+app.secret_key = '123'
 # app.config.from_pyfile('settings.py')
 
 ###### Pages

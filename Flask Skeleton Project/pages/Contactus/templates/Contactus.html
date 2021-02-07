@@ -3,12 +3,10 @@
     <link rel="stylesheet" href="{{ url_for('Contactus.static',filename='css/Conuct_US_CSS.css') }}">
 {% endblock %}
 
-
+{% block page_body_js %}
     <!-----######## to move java script #########------->
     <!---------------script icons---------------->
     <script src="https://kit.fontawesome.com/6850819008.js" crossorigin="anonymous"></script>
-
-    <!------script-->
 
     <!--script for Registration in apopup message -->
     <script>
@@ -23,7 +21,6 @@
         }
     </script>
     <!------script-->
-    <!------script-->
 
     <script>
         function contactFunction(x) {
@@ -34,24 +31,26 @@
             x.style.background = "lightyellow";
         }
     </script>
-    <!---------------script---------------->
 
     <!-----######## end js #########------->
+{% endblock %}
 
-
-{% block  page_body_main_content %}
+{% block page_body_main_content %}
     <body onload="conectMessage()">
+
     <div class="Box">
         <img class="img" src="{{ url_for('Contactus.static', filename='photos/buda.jpeg' ) }}" alt="">
         <h2 class="title">צרו קשר</h2>
         <form method="POST" action="/Contactus">
             <!--contact us boxes+input event change background color-->
-            <input name="email" type="email" class="input-box" placeholder="הכנס אימייל" dir="rtl" onfocus="contactFunction(this)">
-            <input name="first_name" type="text" class="input-box"  placeholder="הכנס שם" dir="rtl" onfocus="contactFunction(this)">
-            <input name="phone_number"  type="number" class="input-box" placeholder="הכנס נייד" dir="rtl"
-                   onfocus="contactFunction(this)">
+            <input name="email" type="email" class="input-box" placeholder="הכנס אימייל" dir="rtl"
+                   onfocus="contactFunction(this)" required>
+            <input name="first_name" type="text" class="input-box" placeholder="הכנס שם" dir="rtl"
+                   onfocus="contactFunction(this)" required>
+            <input name="phone_number" type="number" class="input-box" placeholder="הכנס נייד" dir="rtl"
+                   onfocus="contactFunction(this)" required>
             <input name="message" type="text" class="input-message" placeholder="כתוב הודעה" dir="rtl"
-                   onfocus="contactFunction(this)">
+                   onfocus="contactFunction(this)"required>
             <!--btn-->
             {#        <input type="submit" onclick="conectMessage()">#}
             <input type="submit" value="שלח" class="btn">
@@ -77,5 +76,6 @@
     </body>
 {% endblock %}
 
-{% block page_body_js %}
+{% block page_body_footer %}
 {% endblock %}
+
