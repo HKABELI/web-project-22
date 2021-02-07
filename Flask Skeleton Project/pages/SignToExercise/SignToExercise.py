@@ -23,6 +23,7 @@ def SignToExercise1():
         else:
             return render_template("SignToExercise.html", message="something when wrong please contact administrator")
     else:
+        userEmail = session.get("userEmail")
         exerciseID=request.args.get("id")
-        result=EXdb.delete_exercise_by_id(exerciseID)
+        result=UsersSigned.sign_to_exercise(exerciseID,userEmail)
         return render_template('SignToExercise.html', exercise=result)

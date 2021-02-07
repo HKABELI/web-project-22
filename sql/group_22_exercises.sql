@@ -1,0 +1,5 @@
+INSERT INTO `group 22`.exercises (exercisesID, name, fromTime, toTime, dayOfWeek, capacity, address) VALUES (8, 'יוגה למתחילים', '10:00:00', '11:00:00', 1, 10, 'רגר 4');
+INSERT INTO `group 22`.exercises (exercisesID, name, fromTime, toTime, dayOfWeek, capacity, address) VALUES (9, 'יוגה למתקדמים', '12:00:00', '13:00:00', 4, 10, 'גבע 5');
+INSERT INTO `group 22`.exercises (exercisesID, name, fromTime, toTime, dayOfWeek, capacity, address) VALUES (10, 'יוגה למתחילים', '17:00:00', '18:00:00', 5, 5, 'גבע 5');
+INSERT INTO `group 22`.exercises (exercisesID, name, fromTime, toTime, dayOfWeek, capacity, address) VALUES (11, 'יוגה למתחילים', '09:00:00', '10:00:00', 2, 10, 'גבע 5');
+INSERT INTO `group 22`.exercises (exercisesID, name, fromTime, toTime, dayOfWeek, capacity, address) VALUES (12, 'יוגה למתקדמים', '10:30:00', '11:30:00', 3, 10, 'רגר 5');

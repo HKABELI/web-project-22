@@ -19,3 +19,5 @@ def delete_user():
         email = request.args['email']
         UsersDb.delete_user_by_email(email)
     return redirect('/users')
+
+
